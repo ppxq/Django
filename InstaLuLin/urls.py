@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 
+from Insta.views import SignUp
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Insta/', include('Insta.urls')),
     path('auth/', include('django.contrib.auth.urls')),
+    path('auth/signup/', SignUp.as_view(), name='signup'),
 ]
