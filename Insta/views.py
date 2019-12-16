@@ -21,9 +21,14 @@ class PostsView(ListView):
         current_user = self.request.user
         if current_user.is_authenticated:
             following = set()
+            count = 0
             for conn in UserConnection.objects.filter(creator=current_user).select_related('following'):
                 following.add(conn.following)
-            return Post.objects.filter(author__in=following)
+                count += 1
+            if count == 0:
+                return Post.objects.all()
+            else:
+                return Post.objects.filter(author__in=following)
         else:
             return Post.objects.all()
 

@@ -13,9 +13,16 @@
                 {% endif %}
                 {{ object.author.username }}
             </a>
+                           
+            {% if request.user.username == object.author.username %}
+            <li>
+                <a href="{% url 'post_update' object.id %}">   Edit</a>
+                <a href="{% url 'post_delete' object.id %}">   Delete</a>
+            </li>
+            {% endif %}
         </div>
         <div class="image__wrapper">
-            <img class="card__main-image" src="/{{object.image}}" width='1000', height='1000'>
+            <img class="card__main-image" src="/{{object.image}}">
         </div>
         <div class="comments-portion">
             <div class="likes-timestamp-row">
@@ -30,6 +37,7 @@
             </div>
 
             <ul class="comment-list">
+
                 {% for comment in object.comments.all %}
                 <li class="comment-list__comment">
                     <a href="{% url 'user_detail' comment.user.pk %}" class="user">

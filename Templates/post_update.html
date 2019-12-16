@@ -1,14 +1,26 @@
-{% include 'base.html' %}
+{% extends "base.html" %}
+
+{% load custom_tags %}
 
 {% block content %}
 
+<div class="cards-listing">
+    <div class="row">
+        <div class="card view-update {{ post.pk }}">
+            <div class="card__panel-head">
+                <div class="poster__info">
+                    <h1>Edit Post</h1>
 
-<h1>Edit Post</h1>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Update</button>
+                    </form>
 
-<form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content%}

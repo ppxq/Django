@@ -1,12 +1,30 @@
+{% extends "base.html" %}
+
+{% load custom_tags %}
+
+{% block content %}
+
+<div class="cards-listing">
+    <div class="row">
+        <div class="card view-update {{ post.pk }}">
+            <div class="card__panel-head">
+                <div class="poster__info">
+
+                        <h1>Login</h1>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p}}
+                            <button type="submit">Login</button>
+                        </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-<h1>Login</h1>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p}}
-    <button type="submit">Login</button>
-</form>
-
+{% endblock content %}
 
 

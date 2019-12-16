@@ -1,1 +1,24 @@
-Hello World!
+{% extends "base.html" %}
+
+{% load custom_tags %}
+
+{% block content %}
+
+<div class="cards-listing">
+    <div class="row">
+        <div class="card view-update {{ post.pk }}">
+            <div class="card__panel-head">
+                <div class="poster__info">
+
+                    <h> I am sorry, we are not having the search function right now. 
+                        We are still developing it!
+                        Keep in touch!</h>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
